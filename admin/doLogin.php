@@ -5,7 +5,7 @@ $username = $_POST['username'];
 $password = md5($_POST['password']);
 $verify = $_POST['verify'];
 $verify1 = $_SESSION['verify'];
-$autoFlag = $_POST['autoFlag'];
+$autoFlag = isset($_POST['autoFlag'])?$_POST['autoFlag']:'';
 
 
 if($verify == $verify1){

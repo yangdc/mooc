@@ -1,7 +1,7 @@
 <?php
 
 function connect(){
-    $link = mysql_connect(DB_HOST,DB_USER,DB_PWD) or die("数据库连接失败Error:".mysql_errno().":".mysql_error());
+    @$link = mysql_connect(DB_HOST,DB_USER,DB_PWD) or die("数据库连接失败Error:".mysql_errno().":".mysql_error());
     mysql_set_charset(DB_CHARSET);
     mysql_select_db(DB_NAME)or die("数据库打开失败");
     return $link;
@@ -9,13 +9,14 @@ function connect(){
 
 function insert($table, $array){
     $keys = join(",", array_keys($array));
-    $vals = "'".join("'",  array_values($array))."'";
+    $vals = "'".join("','",  array_values($array))."'";
     $sql = "insert into {$table} ($keys) values({$vals})";
     mysql_query($sql);
     return mysql_insert_id();
 }
 
-function update($talbe, $array, $where=null){
+
+function update($table, $array, $where=null){
     $str="";
     foreach($array as $key=>$val){
         if($str == null){
@@ -32,7 +33,7 @@ function update($talbe, $array, $where=null){
 
 function delete($table, $where=null){
     $where=$where==null?null:" where ".$where;
-    $sql = "delete from {$talbe} {$where}";
+    $sql = "delete from {$table} {$where}";
     mysql_query($sql);
     return mysql_affected_rows();
 }
