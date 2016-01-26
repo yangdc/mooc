@@ -1,8 +1,8 @@
 <?php 
 require_once '../include.php';
 $pageSize=2;
-//$page=$_REQUEST['page']?(int)$_REQUEST['page']:1;
-//$rows=getAdminByPage($page,$pageSize);
+$page = isset($_REQUEST['page'])&&$_REQUEST['page']?(int)$_REQUEST['page']:1;
+$rows=getAdminByPage($page,$pageSize);
 //$sql="select * from imooc_admin";
 //$totalRows=getResultNum($sql);
 //$pageSize=2;
@@ -17,7 +17,7 @@ $pageSize=2;
 //$sql="select id,username,email from imooc_admin limit {$offset},{$pageSize}";
 //$rows=fetchAll($sql);
 
-$rows=getAllAdmin();
+//$rows=getAllAdmin();
 
 if(!$rows){
 	alertMes("sorry,没有管理员,请添加!","addAdmin.php");
@@ -57,14 +57,14 @@ if(!$rows){
                                 <td><input type="checkbox" id="c1" class="check"><label for="c1" class="label"><?php echo $row['id'];?></label></td>
                                 <td><?php echo $row['username'];?></td>
                                 <td><?php echo $row['email'];?></td>
-                                <td align="center"><input type="button" value="编辑" class="btn" onclick="editAdmin(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn"  onclick="delAdmin(<?php echo $row['id'];?>)"></td>
+                                <td align="center"><input type="button" value="修改" class="btn" onclick="editAdmin(<?php echo $row['id'];?>)"><input type="button" value="删除" class="btn"  onclick="delAdmin(<?php echo $row['id'];?>)"></td>
                             </tr>
                             <?php endforeach;?>
-                            <?php //if($totalRows>$pageSize):?>
+                            <?php if($totalRows>$pageSize):?>
                             <tr>
-                            	<td colspan="4"><?php //echo showPage($page, $totalPage);?></td>
+                            	<td colspan="4"><?php echo showPage($page, $totalPage);?></td>
                             </tr>
-                            <?php //endif;?>
+                            <?php endif;?>
                         </tbody>
                     </table>
                 </div>
