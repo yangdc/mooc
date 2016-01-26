@@ -12,6 +12,10 @@ if($act == 'logout'){
 	$mes = delAdmin($id);
 }elseif($act == 'addCate'){
 	$mes = addCate();
+}elseif($act == 'editCate'){
+	$id = $_REQUEST['id'];
+	$where = "id={$id}";
+	$mes = editCate($where);
 }
 ?>
 

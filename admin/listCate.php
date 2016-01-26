@@ -28,7 +28,7 @@ $rows = fetchAll($sql);
 <div class="details">
                     <div class="details_operation clearfix">
                         <div class="bui_select">
-                            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addAdmin()">
+                            <input type="button" value="添&nbsp;&nbsp;加" class="add"  onclick="addCate()">
                         </div>
                             
                     </div>
@@ -58,6 +58,19 @@ $rows = fetchAll($sql);
                         </tbody>
                     </table>
                 </div>
+				
+				<script type="text/javascript">
+				    function editCate(id){
+						window.location = "editCate.php?id="+id;
+					}
+					function delCate(id){
+						window.location = "doAdminAction.php?act=delCate&id="+id;
+					}
+					function addCate(){
+						window.location = "addCate.php";
+					}
+					
+				</script
 </body>
 
 </html>

@@ -27,8 +27,14 @@ function update($table, $array, $where=null){
         $str.=$sep.$key."='".$val."'";
     }
     $sql = "update {$table} set {$str} ".($where==null?null:"where ".$where);
-    mysql_query($sql);
-    return mysql_affected_rows();  
+	
+    $result = mysql_query($sql);
+	if($result){
+		return mysql_affected_rows();  
+	}else{
+		return false;
+	}
+    
 }
 
 function delete($table, $where=null){
