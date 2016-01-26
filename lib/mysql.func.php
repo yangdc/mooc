@@ -46,6 +46,7 @@ function fetchOne($sql, $result_type=MYSQLI_ASSOC){
 
 function fetchAll($sql, $result_type=MYSQL_ASSOC){
     $result=  mysql_query($sql);
+	$rows = array();
     while(@$row=  mysql_fetch_array($result,$result_type)){
         $rows[] = $row;
     }

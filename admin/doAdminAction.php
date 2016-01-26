@@ -1,7 +1,7 @@
 <?php
 require_once '../include.php';
 $act = $_REQUEST['act'];
-$id = $_REQUEST['id'];
+$id = isset($_REQUEST['id'])?$_REQUEST['id']:'';
 if($act == 'logout'){
     logout();
 }elseif($act == 'addAdmin'){
@@ -10,6 +10,8 @@ if($act == 'logout'){
 	$mes = editAdmin($id);
 }elseif($act == 'delAdmin'){
 	$mes = delAdmin($id);
+}elseif($act == 'addCate'){
+	$mes = addCate();
 }
 ?>
 
