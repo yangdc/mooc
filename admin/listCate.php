@@ -64,7 +64,9 @@ $rows = fetchAll($sql);
 						window.location = "editCate.php?id="+id;
 					}
 					function delCate(id){
-						window.location = "doAdminAction.php?act=delCate&id="+id;
+						if(window.confirm("你确定要删除吗？删除后不可恢复！")){
+							window.location = "doAdminAction.php?act=delCate&id="+id;
+						}
 					}
 					function addCate(){
 						window.location = "addCate.php";

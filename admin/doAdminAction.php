@@ -16,6 +16,9 @@ if($act == 'logout'){
 	$id = $_REQUEST['id'];
 	$where = "id={$id}";
 	$mes = editCate($where);
+}elseif($act == 'delCate'){
+	$where = "id={$id}";
+	$mes = delCate($where);
 }
 ?>
 

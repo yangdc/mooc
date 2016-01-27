@@ -24,3 +24,12 @@ function editCate($where){
 	}
 	return $mes;
 }
+
+function delCate($where){
+	if(delete('imooc_cate', $where)){
+		$mes = "分类删除成功！<br/><a href='listCate.php'>查看分类列表</a>|<a href='addCate.php'>添加分类</a>";
+	}else{
+		$mes = "分类删除失败！<br/><a href='listCate.php'>请重新操作</a>";
+	}
+	return $mes;
+}
